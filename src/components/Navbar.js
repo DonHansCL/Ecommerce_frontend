@@ -5,6 +5,7 @@ import { AuthContext } from '../context/AuthContext';
 import { CartContext } from '../context/CartContext';
 import { FaShoppingCart, FaBars, FaTimes, FaUserCircle, FaSearch } from 'react-icons/fa';
 import { debounce } from 'lodash';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function Navbar() {
   const { token, logout } = useContext(AuthContext);
