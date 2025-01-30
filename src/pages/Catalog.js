@@ -30,7 +30,7 @@ function Catalog() {
   
   const fetchCategorias = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/categories');
+      const res = await fetch(`${API_URL}/api/categories`);
       if (!res.ok) throw new Error('No se pudieron cargar las categorías.');
       const data = await res.json();
       setCategorias(data);
@@ -45,7 +45,7 @@ function Catalog() {
       setLoading(true);
       setError('');
       try {
-        let url = 'http://localhost:5000/api/products';
+        let url = `${API_URL}/api/products`;
         const params = new URLSearchParams();
 
         if (search) params.append('search', search);
