@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { FiChevronDown, FiChevronUp, FiPackage, FiTruck, FiCheck, FiX } from 'react-icons/fi';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function AdminOrdersList() {
   const [orders, setOrders] = useState([]);
@@ -14,7 +15,7 @@ function AdminOrdersList() {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('http://localhost:5000/api/pedidos/all', {
+      const res = await fetch(`${API_URL}/api/pedidos/all`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
@@ -39,7 +40,7 @@ function AdminOrdersList() {
   const handleStatusChange = async (orderId, newStatus) => {
     setUpdatingOrderId(orderId);
     try {
-      const res = await fetch(`http://localhost:5000/api/pedidos/${orderId}/status`, {
+      const res = await fetch(`${API_URL}/api/pedidos/${orderId}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -224,7 +225,7 @@ function AdminOrdersList() {
                               {order.items && order.items.map((item) => (
                                 <div key={item.id} className="flex items-center space-x-4 p-2 bg-white rounded-lg shadow-sm">
                                   <img
-                                    src={`http://localhost:5000/${item.product.imagenes[0]}`}
+                                    src={`${API_URL}/${item.product.imagenes[0]}`}
                                     alt={item.product.nombre}
                                     className="w-12 h-12 object-cover rounded"
                                   />

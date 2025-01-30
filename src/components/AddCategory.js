@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function AddCategory({ onSuccess, onCancel }) {
   const [nombre, setNombre] = useState('');
@@ -24,7 +25,7 @@ function AddCategory({ onSuccess, onCancel }) {
     }
 
     try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/categories`, {
+      const res = await fetch(`${API_URL}/api/categories`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,

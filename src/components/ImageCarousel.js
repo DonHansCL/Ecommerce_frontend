@@ -5,6 +5,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
 
 function ImageCarousel({ images }) {
   return (
@@ -26,7 +28,7 @@ function ImageCarousel({ images }) {
               {/* Contenedor de la imagen */}
               <div className="w-full h-full flex items-center justify-center">
                 <img
-                  src={`http://localhost:5000/${img}`}
+                  src={`${API_URL}/${img}`}
                   alt={`Imagen de Producto ${index + 1}`}
                   className="w-full h-full object-cover rounded-lg"
                   loading="lazy"

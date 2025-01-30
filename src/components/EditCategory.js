@@ -1,6 +1,7 @@
 // src/components/EditCategory.js
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function EditCategory({ category, onSuccess, onCancel }) {
   const [nombre, setNombre] = useState(category ? category.nombre : '');
@@ -27,7 +28,7 @@ function EditCategory({ category, onSuccess, onCancel }) {
     }
 
     try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/categories/${category.id}`, {
+      const res = await fetch(`${API_URL}/api/categories/${category.id}`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -84,7 +85,7 @@ function EditCategory({ category, onSuccess, onCancel }) {
           <div>
             <p>Imagen Actual:</p>
             <img 
-              src={`${process.env.REACT_APP_API_URL}/uploads/categories/${category.imagen}`} 
+              src={`${API_URL}/uploads/categories/${category.imagen}`} 
               alt={category.nombre} 
               className="w-32 h-32 object-cover mb-2 rounded" 
             />

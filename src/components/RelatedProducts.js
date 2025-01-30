@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from './ProductCard';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
 
 function RelatedProducts({ categoriaId, currentProductId }) {
   const [related, setRelated] = useState([]);
@@ -18,7 +20,7 @@ function RelatedProducts({ categoriaId, currentProductId }) {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch(`http://localhost:5000/api/categories/${categoriaId}/products?limit=4&exclude=${currentProductId}`);
+      const res = await fetch(`${API_URL}/api/categories/${categoriaId}/products?limit=4&exclude=${currentProductId}`);
       if (!res.ok) throw new Error('Error al cargar productos relacionados.');
       const data = await res.json();
       setRelated(data);

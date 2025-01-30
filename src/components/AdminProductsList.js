@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiEdit, FiTrash2 } from 'react-icons/fi';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function AdminProductsList({ products, onEdit, onDelete }) {
 
@@ -12,7 +13,7 @@ function AdminProductsList({ products, onEdit, onDelete }) {
     // Obtener categorías para el filtro
     const fetchCategories = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/categories');
+        const res = await fetch(`${API_URL}/api/categories`);
         if (!res.ok) throw new Error('No se pudieron cargar las categorías.');
         const data = await res.json();
         setCategories(data);
@@ -145,7 +146,7 @@ function AdminProductsList({ products, onEdit, onDelete }) {
                     <div className="h-16 w-16 flex-shrink-0">
                       <img
                         className="h-16 w-16 rounded-lg object-cover"
-                        src={`http://localhost:5000/${product.imagenes?.[0] || 'default.jpg'}`}
+                        src={`${API_URL}/${product.imagenes?.[0] || 'default.jpg'}`}
                         alt={product.nombre}
                       />
                     </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function EditProduct({ product, onSuccess, onCancel }) {
   const [nombre, setNombre] = useState(product.nombre);
@@ -24,7 +25,7 @@ function EditProduct({ product, onSuccess, onCancel }) {
   // Obtener las categorías disponibles
   const fetchCategorias = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/categories', {
+      const res = await fetch(`${API_URL}/api/categories`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
@@ -124,7 +125,7 @@ function EditProduct({ product, onSuccess, onCancel }) {
     });
 
     try {
-      const res = await fetch(`http://localhost:5000/api/products/${product.id}`, {
+      const res = await fetch(`${API_URL}/api/products/${product.id}`, {
         method: 'PUT',
         body: formData,
         headers: {
@@ -288,7 +289,7 @@ function EditProduct({ product, onSuccess, onCancel }) {
                             {...provided.dragHandleProps}
                           >
                             <img
-                              src={`http://localhost:5000/${img}`}
+                              src={`${API_URL}/${img}`}
                               alt={`Imagen ${index + 1}`}
                               className="w-32 h-32 object-cover rounded-md"
                             />

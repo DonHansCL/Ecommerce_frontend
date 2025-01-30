@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowRight } from 'react-icons/fi';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function Categories() {
   const [categories, setCategories] = useState([]);
@@ -9,7 +10,7 @@ function Categories() {
 
   const fetchCategories = async () => {
     try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/categories`);
+      const res = await fetch(`${API_URL}/api/categories`);
       const data = await res.json();
       if (res.ok) {        
         setCategories(data);

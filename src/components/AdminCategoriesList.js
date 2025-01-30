@@ -5,6 +5,7 @@ import AddCategory from './AddCategory';
 import EditCategory from './EditCategory';
 import { toast } from 'react-toastify';
 import Modal from './Modal';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function AdminCategoriesList() {
   const [categories, setCategories] = useState([]);
@@ -17,7 +18,7 @@ function AdminCategoriesList() {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('http://localhost:5000/api/categories', {
+      const res = await fetch(`${API_URL}/api/categories`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
@@ -42,7 +43,7 @@ function AdminCategoriesList() {
     if (!window.confirm('¿Estás seguro de que deseas eliminar esta categoría?')) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/categories/${id}`, {
+      const res = await fetch(`${API_URL}/api/categories/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -147,7 +148,7 @@ function AdminCategoriesList() {
                         {category.imagen ? (
                           <div className="flex-shrink-0 h-16 w-16">
                             <img
-                              src={`http://localhost:5000/uploads/categories/${category.imagen}`}
+                              src={`${API_URL}/uploads/categories/${category.imagen}`}
                               alt={category.nombre}
                               className="h-16 w-16 rounded-lg object-cover"
                             />

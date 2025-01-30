@@ -2,6 +2,7 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { AuthContext } from './AuthContext';
 import { toast } from 'react-toastify';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 export const CartContext = createContext();
 
@@ -52,7 +53,7 @@ export function CartProvider({ children }) {
     if (!token) return;
     
     try {
-      const res = await fetch('http://localhost:5000/api/carts', {
+      const res = await fetch(`${API_URL}/api/carts`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -86,7 +87,7 @@ export function CartProvider({ children }) {
     setIsSyncing(true);
     try {
       // Obtener el carrito actual del backend
-      const res = await fetch('http://localhost:5000/api/carts', {
+      const res = await fetch(`${API_URL}/api/carts`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -103,7 +104,7 @@ export function CartProvider({ children }) {
         
         if (backendItem) {
           // Si existe, actualizar cantidad
-          await fetch('http://localhost:5000/api/carts/update', {
+          await fetch(`${API_URL}/api/carts/update`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
@@ -116,7 +117,7 @@ export function CartProvider({ children }) {
           });
         } else {
           // Si no existe, agregar nuevo
-          await fetch('http://localhost:5000/api/carts/add', {
+          await fetch(`${API_URL}/api/carts/add`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -179,7 +180,7 @@ export function CartProvider({ children }) {
 
     try {
       if (token) {
-        const res = await fetch('http://localhost:5000/api/carts/add', {
+        const res = await fetch(`${API_URL}/api/carts/add`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -233,7 +234,7 @@ export function CartProvider({ children }) {
 
     try {
       if (token) {
-        const res = await fetch('http://localhost:5000/api/carts/update', {
+        const res = await fetch(`${API_URL}/api/carts/update`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -269,7 +270,7 @@ export function CartProvider({ children }) {
   const removeFromCart = async (productId) => {
     try {
       if (token) {
-        const res = await fetch(`http://localhost:5000/api/carts/remove/${productId}`, {
+        const res = await fetch(`${API_URL}/api/carts/remove/${productId}`, {
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${token}`

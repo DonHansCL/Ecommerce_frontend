@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
 
 function Reviews({ productId }) {
   const [reviews, setReviews] = useState([]);
@@ -14,7 +16,7 @@ function Reviews({ productId }) {
 
   const fetchReviews = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/products/${productId}/reviews`);
+      const res = await fetch(`${API_URL}/api/products/${productId}/reviews`);
       if (!res.ok) throw new Error('Error al cargar las reseñas.');
       const data = await res.json();
       setReviews(data);
@@ -30,7 +32,7 @@ function Reviews({ productId }) {
       return;
     }
     try {
-      const res = await fetch(`http://localhost:5000/api/products/${productId}/reviews`, {
+      const res = await fetch(`${API_URL}/api/products/${productId}/reviews`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

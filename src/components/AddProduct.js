@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function AddProduct({ onSuccess, onCancel }) {
   const [nombre, setNombre] = useState('');
@@ -17,7 +18,7 @@ function AddProduct({ onSuccess, onCancel }) {
   // Obtener las categorías disponibles
   const fetchCategorias = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/categories');
+      const res = await fetch(`${API_URL}/api/categories`);
       if (!res.ok) {
         throw new Error('No se pudieron cargar las categorías.');
       }
@@ -98,7 +99,7 @@ function AddProduct({ onSuccess, onCancel }) {
     }
 
     try {
-      const res = await fetch('http://localhost:5000/api/products', {
+      const res = await fetch(`${API_URL}/api/products`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,

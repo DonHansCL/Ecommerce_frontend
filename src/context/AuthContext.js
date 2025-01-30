@@ -3,6 +3,8 @@ import React, { createContext, useState, useEffect } from 'react';
 //import { CartContext } from './CartContext';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
 
 export const AuthContext = createContext();
 
@@ -16,7 +18,7 @@ export function AuthProvider({ children }) {
     const fetchUser = async () => {
       if (token) {
         try {
-          const res = await fetch('http://localhost:5000/api/auth/me', {
+          const res = await fetch(`${API_URL}/api/auth/me`, {
             headers: {
               'Authorization': `Bearer ${token}`,
             },

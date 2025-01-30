@@ -5,7 +5,7 @@ import LazyLoad from 'react-lazyload';
 import { CartContext } from '../context/CartContext';
 import { FaHeart } from 'react-icons/fa';
 import ProductCard from '../components/ProductCard';
-
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function FeaturedProducts() {
   const [products, setProducts] = useState([]);
@@ -13,7 +13,7 @@ function FeaturedProducts() {
 
   const fetchFeaturedProducts = async () => {
     try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/products?featured=true`);
+      const res = await fetch(`${API_URL}/api/products?featured=true`);
       const data = await res.json();
       if (res.ok) {
         setProducts(Array.isArray(data) ? data : []);

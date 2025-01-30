@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import { FiMinus, FiPlus } from 'react-icons/fi';
 import { FaShoppingCart, FaHeart } from 'react-icons/fa';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function ProductCard({ product, size = 'large' }) {
   const { addToCart, updateQuantity, removeFromCart } = useContext(CartContext);
@@ -50,7 +51,7 @@ function ProductCard({ product, size = 'large' }) {
     <div className={cardClasses}>
       <Link to={`/product/${product.id}`} className="relative">
         <img
-          src={`http://localhost:5000/${product.imagenes[0]}`}
+          src={`${API_URL}/${product.imagenes[0]}`}
           alt={product.nombre}
           className={imageClasses}
         />

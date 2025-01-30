@@ -79,7 +79,7 @@ function Navbar() {
     setCategoriasLoading(true);
     setCategoriasError('');
     try {
-      const res = await fetch('http://localhost:5000/api/categories');
+      const res = await fetch(`${API_URL}/api/categories`);
       if (!res.ok) {
         throw new Error('Respuesta inválida del servidor al obtener categorías.');
       }
