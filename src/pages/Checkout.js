@@ -3,6 +3,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { CartContext } from '../context/CartContext';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function Checkout() {
   const { cartItems, clearCart } = useContext(CartContext);
@@ -36,7 +37,7 @@ function Checkout() {
         throw new Error('La dirección es requerida');
       }
 
-      const res = await fetch('http://localhost:5000/api/pedidos/checkout', {
+      const res = await fetch(`${API_URL}/api/pedidos/checkout`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -89,7 +90,7 @@ function Checkout() {
                 <div key={item.id} className="flex justify-between items-center border-b pb-2">
                   <div className="flex items-center">
                     <img
-                      src={`http://localhost:5000/${item.product.imagenes[0]}`}
+                      src={`${API_URL}/${item.product.imagenes[0]}`}
                       alt={item.product.nombre}
                       className="w-12 h-12 object-cover rounded mr-4"
                     />
@@ -193,7 +194,7 @@ function Checkout() {
               <div key={item.product.id} className="flex justify-between items-center border-b pb-2">
                 <div className="flex items-center">
                   <img
-                    src={`http://localhost:5000/${item.product.imagenes[0]}`}
+                    src={`${API_URL}/${item.product.imagenes[0]}`}
                     alt={item.product.nombre}
                     className="w-12 h-12 object-cover rounded mr-4"
                   />

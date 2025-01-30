@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function Orders() {
   const { token } = useContext(AuthContext);
@@ -14,7 +15,7 @@ function Orders() {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('http://localhost:5000/api/pedidos', {
+      const res = await fetch(`${API_URL}/api/pedidos`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -100,7 +101,7 @@ function Orders() {
                         <div key={item.id} className="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-4 border-b pb-4">
                           <img
                             src={item.product && item.product.imagenes.length > 0
-                              ? `http://localhost:5000/${item.product.imagenes[0]}`
+                              ? `${API_URL}/${item.product.imagenes[0]}`
                               : '/default-product.png'}
                             alt={item.product ? item.product.nombre : 'Producto'}
                             className="w-16 h-16 object-cover rounded shadow-md"

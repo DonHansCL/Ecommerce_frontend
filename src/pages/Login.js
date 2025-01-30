@@ -4,6 +4,8 @@ import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { FaEnvelope, FaLock, FaUserPlus } from 'react-icons/fa';
 import logo from '../images/logo.png';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
 
 function Login() {
   const [correo, setCorreo] = useState('');
@@ -22,7 +24,7 @@ function Login() {
     }
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/login', {
+      const res = await fetch(`${API_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ correo, contraseña }),

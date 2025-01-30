@@ -8,6 +8,7 @@ import RelatedProducts from '../components/RelatedProducts';
 import Specifications from '../components/Specifications';
 import SocialShare from '../components/SocialShare';
 import { FiShoppingCart, FiHeart } from 'react-icons/fi';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function ProductDetails() {
   const { id } = useParams();
@@ -22,7 +23,7 @@ function ProductDetails() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/products/${id}`);
+        const res = await fetch(`${API_URL}/api/products/${id}`);
         if (!res.ok) throw new Error('Producto no encontrado.');
         const data = await res.json();
         setProduct(data);
@@ -88,7 +89,7 @@ function ProductDetails() {
           <div className="flex flex-col">
             <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden">
               <img
-                src={`http://localhost:5000/${product.imagenes[selectedImage]}`}
+                src={`${API_URL}/${product.imagenes[selectedImage]}`}
                 alt={product.nombre}
                 className="w-full h-full object-center object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -103,7 +104,7 @@ function ProductDetails() {
                     }`}
                 >
                   <img
-                    src={`http://localhost:5000/${image}`}
+                    src={`${API_URL}/${image}`}
                     alt={`Vista ${index + 1}`}
                     className="w-full h-16 object-cover"
                   />

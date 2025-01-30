@@ -5,6 +5,7 @@ import { FaShoppingCart, FaHeart } from 'react-icons/fa';
 import { FiMinus, FiPlus } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function Catalog() {
   const [productos, setProductos] = useState([]);

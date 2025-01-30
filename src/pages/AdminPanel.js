@@ -8,6 +8,8 @@ import EditProduct from '../components/EditProduct';
 import { FaBox, FaList, FaShoppingCart } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import Modal from '../components/Modal';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
 
 function AdminPanel() {
   const [activeTab, setActiveTab] = useState('productos');
@@ -24,7 +26,7 @@ function AdminPanel() {
     setLoadingProducts(true);
     setErrorProducts('');
     try {
-      const res = await fetch('http://localhost:5000/api/products', {
+      const res = await fetch(`${API_URL}/api/products`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
@@ -50,7 +52,7 @@ function AdminPanel() {
     if (!window.confirm('¿Estás seguro de que deseas eliminar este producto?')) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/products/${id}`, {
+      const res = await fetch(`${API_URL}/api/products/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,

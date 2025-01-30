@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function ChangePassword() {
   const { token } = useContext(AuthContext);

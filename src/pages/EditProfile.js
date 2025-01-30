@@ -2,6 +2,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 
+
+
 function EditProfile() {
   const { token } = useContext(AuthContext);
   const [nombre, setNombre] = useState('');

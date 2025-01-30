@@ -5,6 +5,8 @@ import { CartContext } from '../context/CartContext';
 import { FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
 
 function Cart() {
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useContext(CartContext);
@@ -85,7 +87,7 @@ function Cart() {
                   <td className="py-4 px-6 flex items-center">
                     {item.product.imagenes && item.product.imagenes.length > 0 ? (
                       <img
-                        src={`http://localhost:5000/${item.product.imagenes[0]}`}
+                        src={`${API_URL}/${item.product.imagenes[0]}`}
                         alt={item.product.nombre}
                         className="w-16 h-16 object-cover rounded mr-4"
                       />

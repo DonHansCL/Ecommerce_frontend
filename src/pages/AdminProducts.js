@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import AdminProductsList from '../components/AdminProductsList';
 import AddProduct from '../components/AddProduct';
 import EditProduct from '../components/EditProduct';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
 
 function AdminProducts() {
   const [products, setProducts] = useState([]);
@@ -16,7 +18,7 @@ function AdminProducts() {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('http://localhost:5000/api/products');
+      const res = await fetch(`${API_URL}/api/products`);
       if (!res.ok) {
         throw new Error('No se pudieron cargar los productos.');
       }
@@ -38,7 +40,7 @@ function AdminProducts() {
     if (!window.confirm('¿Estás seguro de que deseas eliminar este producto?')) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/products/${id}`, {
+      const res = await fetch(`${API_URL}/api/products/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`, // Asegúrate de manejar el token adecuadamente
