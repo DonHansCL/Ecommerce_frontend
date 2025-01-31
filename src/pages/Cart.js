@@ -128,16 +128,16 @@ function Cart() {
             <span className="text-xl font-semibold">Total:</span>
             <span className="text-xl font-semibold">{formatPrice(totalPrice)}</span>
           </div>
-          <div className="flex justify-between">
+          <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
             <button
               onClick={handleClearCart}
-              className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg transition"
+              className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg transition w-full md:w-auto"
             >
               Limpiar Carrito
             </button>
             <Link
               to="/checkout"
-              className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition"
+              className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition w-full md:w-auto"
             >
               Proceder al Checkout
             </Link>
