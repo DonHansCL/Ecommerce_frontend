@@ -131,13 +131,13 @@ function Cart() {
           <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
             <button
               onClick={handleClearCart}
-              className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg transition w-full md:w-auto"
+              className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg transition w-full md:w-auto flex items-center justify-center"
             >
               Limpiar Carrito
             </button>
             <Link
               to="/checkout"
-              className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition w-full md:w-auto"
+              className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition w-full md:w-auto flex items-center justify-center"
             >
               Proceder al Checkout
             </Link>
