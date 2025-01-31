@@ -3,6 +3,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { CartContext } from '../context/CartContext';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { formatPrice } from '../utils/formatPrice';
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
@@ -20,7 +21,7 @@ function Checkout() {
   // Calculate total
   const total = cartItems.reduce((sum, item) => 
     sum + (item.product.precio * item.cantidad), 0
-  ).toFixed(2);
+  ).toFixed(0);
 
   // Verificar carrito vacío
   useEffect(() => {
@@ -60,6 +61,7 @@ function Checkout() {
       // Set the order details for confirmation
       setOrder(data.order);
       clearCart(); // Clear the cart after successful order
+      toast.success('Pedido realizado con éxito.');
       setLoading(false);
     } catch (err) {
       setError(err.message);
@@ -79,7 +81,7 @@ function Checkout() {
           <p><strong>ID del Pedido:</strong> {order.id}</p>
           <p><strong>Dirección de Envío:</strong> {order.direccionEnvio}</p>
           <p><strong>Método de Pago:</strong> {order.metodoPago}</p>
-          <p><strong>Total:</strong> ${parseFloat(order.total).toFixed(2)}</p>
+          <p><strong>Total:</strong> {formatPrice(order.total)}</p>
           <p><strong>Estado:</strong> {order.estado}</p>
           <p><strong>Fecha:</strong> {new Date(order.createdAt).toLocaleString()}</p>
         </div>

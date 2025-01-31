@@ -8,7 +8,7 @@ import { debounce } from 'lodash';
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function Navbar() {
-  const { token, logout } = useContext(AuthContext);
+  const { token, user, logout } = useContext(AuthContext);
   const { cartItems } = useContext(CartContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -214,14 +214,25 @@ function Navbar() {
           <div className="flex items-center space-x-4">
             {/* Profile Icon */}
             <div className="relative" ref={profileRef}>
-              <button
-                onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
-                className="flex items-center text-gray-700  hover:text-indigo-600 transition-colors duration-300 focus:outline-none"
-                aria-haspopup="true"
-                aria-expanded={isProfileMenuOpen}
-              >
-                <FaUserCircle size={24} />
-              </button>
+              {user ? (
+                <button
+                  onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
+                  className="flex items-center text-gray-700  hover:text-indigo-600 transition-colors duration-300 focus:outline-none"
+                  aria-haspopup="true"
+                  aria-expanded={isProfileMenuOpen}
+                >
+                  <FaUserCircle size={24} className="text-green-600 hover:text-green-800 transition-colors duration-300" />
+                </button>
+              ) : (
+                <button
+                  onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
+                  className="flex items-center text-gray-700  hover:text-indigo-600 transition-colors duration-300 focus:outline-none"
+                  aria-haspopup="true"
+                  aria-expanded={isProfileMenuOpen}
+                >
+                  <FaUserCircle size={24} className="text-gray-600 hover:text-gray-800 transition-colors duration-300" />
+                </button>
+              )}
 
               {/* Profile Dropdown */}
               {isProfileMenuOpen && (

@@ -295,25 +295,27 @@ export function CartProvider({ children }) {
   const clearCart = async () => {
     try {
       if (token) {
-        const res = await fetch('http://localhost:5000/api/carts/clear', {
+        const res = await fetch(`${API_URL}/api/carts/clear`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`
           }
         });
 
-        if (!res.ok) throw new Error('Error clearing cart');
-        
-        await fetchCart();
+        if (!res.ok) {
+          throw new Error('Error al limpiar el carrito en el backend.');
+        }
+
+        setCartItems([]);
+        toast.success('Carrito limpiado correctamente.', { toastId: 'clear-success' });
       } else {
         setCartItems([]);
-        localStorage.removeItem('cart');
+        updateLocalStorage([]);
+        toast.success('Carrito limpiado correctamente.', { toastId: 'clear-success' });
       }
-      
-      toast.success('Carrito limpiado');
     } catch (error) {
       console.error('Error clearing cart:', error);
-      toast.error('Error al limpiar el carrito');
+      toast.error('Error al limpiar el carrito.', { toastId: 'clear-error' });
     }
   };
 
