@@ -134,14 +134,14 @@ function Navbar() {
             <div className="hidden md:flex ml-6 space-x-4">
               <Link
                 to="/"
-                className="text-md font-medium text-gray-700 dark:text-gray-200 hover:text-indigo-600 transition-colors duration-300"
+                className="text-md font-medium text-gray-700  hover:text-indigo-600 transition-colors duration-300"
               >
                 Inicio
               </Link>
               {/* Categorias Dropdown */}
               <div className="relative group">
                 <button
-                  className="text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-indigo-600 transition-colors duration-300 flex items-center focus:outline-none"
+                  className="text-lg font-medium text-gray-700  hover:text-indigo-600 transition-colors duration-300 flex items-center focus:outline-none"
                 >
                   Categorías
                   <svg
@@ -159,9 +159,9 @@ function Navbar() {
                 </button>
 
                 {/* Dropdown Menu */}
-                <div className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-700 rounded-md shadow-lg py-1 z-50 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300">
+                <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300">
                   {categoriasLoading ? (
-                    <div className="px-4 py-2 text-gray-700 dark:text-gray-200">Cargando...</div>
+                    <div className="px-4 py-2 text-gray-700 ">Cargando...</div>
                   ) : categoriasError ? (
                     <div className="px-4 py-2 text-red-500">{categoriasError}</div>
                   ) : categorias.length > 0 ? (
@@ -169,13 +169,13 @@ function Navbar() {
                       <button
                         key={categoria.id}
                         onClick={() => handleCategoryClick(categoria.id)}
-                        className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                        className="w-full text-left px-4 py-2 text-sm text-gray-700  hover:bg-gray-100 "
                       >
                         {categoria.nombre}
                       </button>
                     ))
                   ) : (
-                    <div className="px-4 py-2 text-gray-700 dark:text-gray-200">No hay categorías</div>
+                    <div className="px-4 py-2 text-gray-700 ">No hay categorías</div>
                   )}
                 </div>
               </div>
@@ -183,7 +183,7 @@ function Navbar() {
               {payload && payload.rol === 'administrador' && (
                 <Link
                   to="/admin"
-                  className="text-md font-medium text-gray-700 dark:text-gray-200 hover:text-indigo-600 transition-colors duration-300"
+                  className="text-md font-medium text-gray-700  hover:text-indigo-600 transition-colors duration-300"
                 >
                   Admin
                 </Link>
@@ -199,7 +199,7 @@ function Navbar() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Buscar productos..."
-                className="w-full px-4 py-1 text-sm text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300"
+                className="w-full px-4 py-1 text-sm text-gray-900 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 "
               />
               <button
                 type="submit"
@@ -216,7 +216,7 @@ function Navbar() {
             <div className="relative" ref={profileRef}>
               <button
                 onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
-                className="flex items-center text-gray-700 dark:text-gray-200 hover:text-indigo-600 transition-colors duration-300 focus:outline-none"
+                className="flex items-center text-gray-700  hover:text-indigo-600 transition-colors duration-300 focus:outline-none"
                 aria-haspopup="true"
                 aria-expanded={isProfileMenuOpen}
               >
@@ -225,26 +225,26 @@ function Navbar() {
 
               {/* Profile Dropdown */}
               {isProfileMenuOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-700 rounded-md shadow-lg py-1 z-20">
+                <div className="absolute right-0 mt-2 w-48 bg-white  rounded-md shadow-lg py-1 z-20">
                   {token ? (
                     <>
                       <Link
                         to="/dashboard/profile"
-                        className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                        className="block px-4 py-2 text-sm text-gray-700  hover:bg-gray-100 "
                         onClick={() => setIsProfileMenuOpen(false)}
                       >
                         Ver Perfil
                       </Link>
                       <Link
                         to="/dashboard/edit-profile"
-                        className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                        className="block px-4 py-2 text-sm text-gray-700  hover:bg-gray-100 "
                         onClick={() => setIsProfileMenuOpen(false)}
                       >
                         Editar Perfil
                       </Link>
                       <Link
                         to="/dashboard/orders"
-                        className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                        className="block px-4 py-2 text-sm text-gray-700  hover:bg-gray-100 "
                         onClick={() => setIsProfileMenuOpen(false)}
                       >
                         Mis Pedidos
@@ -254,7 +254,7 @@ function Navbar() {
                           handleLogout();
                           setIsProfileMenuOpen(false);
                         }}
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                        className="block w-full text-left px-4 py-2 text-sm text-gray-700  hover:bg-gray-100 "
                       >
                         Cerrar Sesión
                       </button>
@@ -263,14 +263,14 @@ function Navbar() {
                     <>
                       <Link
                         to="/login"
-                        className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                        className="block px-4 py-2 text-sm text-gray-700  hover:bg-gray-100 "
                         onClick={() => setIsProfileMenuOpen(false)}
                       >
                         Iniciar Sesión
                       </Link>
                       <Link
                         to="/register"
-                        className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                        className="block px-4 py-2 text-sm text-gray-700  hover:bg-gray-100 "
                         onClick={() => setIsProfileMenuOpen(false)}
                       >
                         Registrarse
@@ -284,7 +284,7 @@ function Navbar() {
             {/* Cart Icon */}
             <Link
               to="/cart"
-              className="relative text-gray-700 dark:text-gray-200 hover:text-indigo-600 transition-colors duration-300"
+              className="relative text-gray-700  hover:text-indigo-600 transition-colors duration-300"
             >
               <FaShoppingCart size={24} />
               {totalItems > 0 && (
@@ -298,7 +298,7 @@ function Navbar() {
             <div className="md:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-gray-700 dark:text-gray-200 hover:text-indigo-600 focus:outline-none"
+                className="text-gray-700  hover:text-indigo-600 focus:outline-none"
               >
                 {isMobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
               </button>
@@ -309,24 +309,24 @@ function Navbar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-900 shadow-md">
+        <div className="md:hidden bg-white  shadow-md">
           <div className="px-4 pt-4 pb-3 space-y-1 sm:px-3">
             <Link
               to="/"
-              className="block text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-indigo-600 transition-colors duration-300"
+              className="block text-lg font-medium text-gray-700  hover:text-indigo-600 transition-colors duration-300"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Inicio
             </Link>
             {/* Categorias Mobile */}
-            <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
+            <div className="border-t border-gray-200  pt-4">
               <div className="flex items-center justify-between">
-                <span className="text-lg font-medium text-gray-700 dark:text-gray-200">Categorías</span>
-                <span className="text-gray-500 dark:text-gray-400">{categorias.length}</span>
+                <span className="text-lg font-medium text-gray-700 ">Categorías</span>
+                <span className="text-gray-500 ">{categorias.length}</span>
               </div>
               <div className="mt-2 space-y-1">
                 {categoriasLoading ? (
-                  <div className="px-4 py-2 text-gray-700 dark:text-gray-200">Cargando...</div>
+                  <div className="px-4 py-2 text-gray-700 ">Cargando...</div>
                 ) : categoriasError ? (
                   <div className="px-4 py-2 text-red-500">{categoriasError}</div>
                 ) : categorias.length > 0 ? (
@@ -334,13 +334,13 @@ function Navbar() {
                     <button
                       key={categoria.id}
                       onClick={() => handleCategoryClick(categoria.id)}
-                      className="block w-full text-left text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-indigo-600 transition-colors duration-300 px-4 py-2 rounded-md"
+                      className="block w-full text-left text-lg font-medium text-gray-700  hover:text-indigo-600 transition-colors duration-300 px-4 py-2 rounded-md"
                     >
                       {categoria.nombre}
                     </button>
                   ))
                 ) : (
-                  <div className="px-4 py-2 text-gray-700 dark:text-gray-200">No hay categorías</div>
+                  <div className="px-4 py-2 text-gray-700 ">No hay categorías</div>
                 )}
               </div>
             </div>
@@ -348,7 +348,7 @@ function Navbar() {
             {payload && payload.rol === 'administrador' && (
               <Link
                 to="/admin"
-                className="block text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-indigo-600 transition-colors duration-300"
+                className="block text-lg font-medium text-gray-700  hover:text-indigo-600 transition-colors duration-300"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Admin
@@ -362,7 +362,7 @@ function Navbar() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Buscar..."
-                className="flex-grow px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-l-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white"
+                className="flex-grow px-3 py-2 border border-gray-300  rounded-l-md focus:outline-none focus:ring-2 focus:ring-indigo-500 "
               />
               <button
                 type="submit"
@@ -375,7 +375,7 @@ function Navbar() {
             {/* Icono de Carrito Mobile */}
             <Link
               to="/cart"
-              className="relative flex items-center text-gray-700 dark:text-gray-200 hover:text-indigo-600 transition-colors duration-300 mt-4"
+              className="relative flex items-center text-gray-700  hover:text-indigo-600 transition-colors duration-300 mt-4"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <FaShoppingCart size={24} />
@@ -389,24 +389,24 @@ function Navbar() {
 
             {/* Perfil / Login Mobile */}
             {token ? (
-              <div className="mt-4 border-t border-gray-200 dark:border-gray-700 pt-4">
+              <div className="mt-4 border-t border-gray-200  pt-4">
                 <Link
                   to="/dashboard/profile"
-                  className="block text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-indigo-600 transition-colors duration-300"
+                  className="block text-lg font-medium text-gray-700  hover:text-indigo-600 transition-colors duration-300"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Perfil
                 </Link>
                 <Link
                   to="/dashboard/orders"
-                  className="block text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-indigo-600 transition-colors duration-300"
+                  className="block text-lg font-medium text-gray-700  hover:text-indigo-600 transition-colors duration-300"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Mis Pedidos
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="w-full text-left text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-indigo-600 transition-colors duration-300 mt-2"
+                  className="w-full text-left text-lg font-medium text-gray-700  hover:text-indigo-600 transition-colors duration-300 mt-2"
                 >
                   Cerrar Sesión
                 </button>
@@ -414,7 +414,7 @@ function Navbar() {
             ) : (
               <Link
                 to="/login"
-                className="block text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-indigo-600 transition-colors duration-300 mt-4"
+                className="block text-lg font-medium text-gray-700  hover:text-indigo-600 transition-colors duration-300 mt-4"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Iniciar Sesión
@@ -423,17 +423,17 @@ function Navbar() {
 
             {/* Rutas de Administración Mobile */}
             {payload && payload.rol === 'administrador' && (
-              <div className="mt-4 border-t border-gray-200 dark:border-gray-700 pt-4">
+              <div className="mt-4 border-t border-gray-200  pt-4">
                 <Link
                   to="/admin"
-                  className="block text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-indigo-600 transition-colors duration-300"
+                  className="block text-lg font-medium text-gray-700  hover:text-indigo-600 transition-colors duration-300"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Panel de Administración
                 </Link>
                 <Link
                   to="/admin/products"
-                  className="block text-lg font-medium text-gray-700 dark:text-gray-200 hover:text-indigo-600 transition-colors duration-300"
+                  className="block text-lg font-medium text-gray-700  hover:text-indigo-600 transition-colors duration-300"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Gestionar Productos
