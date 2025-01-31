@@ -8,6 +8,7 @@ import RelatedProducts from '../components/RelatedProducts';
 import Specifications from '../components/Specifications';
 import SocialShare from '../components/SocialShare';
 import { FiShoppingCart, FiHeart } from 'react-icons/fi';
+import { formatPrice } from '../utils/formatPrice';
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function ProductDetails() {
@@ -117,7 +118,7 @@ function ProductDetails() {
           <div className="mt-10 lg:mt-0 lg:ml-8">
             <h1 className="text-3xl font-bold text-gray-900">{product.nombre}</h1>
             <div className="mt-4">
-              <p className="text-3xl text-gray-900">${product.precio}</p>
+              <p className="text-3xl text-gray-900">{formatPrice(product.precio)}</p>
               {/* Stock status */}
               <div className="mt-4">
                 <span className={`inline-flex px-3 py-1 rounded-full text-sm font-medium ${getStockStatus(product.cantidadEnStock).className}`}>

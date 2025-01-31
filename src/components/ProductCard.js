@@ -81,7 +81,7 @@ function ProductCard({ product, size = 'large' }) {
         </p>
         <div className="flex items-center justify-between">
           <div>
-            <span className={priceClasses}>${formatPrice(product.precio)}</span>
+            <span className={priceClasses}>{formatPrice(product.precio)}</span>
             {product.originalPrice && (
               <span className="text-sm text-gray-500 line-through ml-2">
                 ${product.originalPrice}

@@ -4,6 +4,7 @@ import { CartContext } from '../context/CartContext';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+import { formatPrice } from '../utils/formatPrice';
 
 function Checkout() {
   const { cartItems, clearCart } = useContext(CartContext);
@@ -99,7 +100,7 @@ function Checkout() {
                       <p className="text-gray-600">Cantidad: {item.cantidad}</p>
                     </div>
                   </div>
-                  <p className="font-medium">${(item.precio * item.cantidad).toFixed(2)}</p>
+                  <p className="font-medium">{formatPrice(item.precio * item.cantidad)}</p>
                 </div>
               ))
             ) : (
@@ -109,7 +110,7 @@ function Checkout() {
             <div className="border-t pt-4">
               <div className="flex justify-between text-xl font-bold">
                 <span>Total:</span>
-                <span>${parseFloat(order.total).toFixed(2)}</span>
+                <span>{formatPrice(order.total)}</span>
               </div>
             </div>
           </div>
@@ -203,14 +204,14 @@ function Checkout() {
                     <p className="text-gray-600">Cantidad: {item.cantidad}</p>
                   </div>
                 </div>
-                <p className="font-medium">${(item.product.precio * item.cantidad).toFixed(2)}</p>
+                <p className="font-medium">{formatPrice(item.product.precio * item.cantidad)}</p>
               </div>
             ))}
 
             <div className="border-t pt-4">
               <div className="flex justify-between text-xl font-bold">
                 <span>Total:</span>
-                <span>${total}</span>
+                <span>{formatPrice(total)}</span>
               </div>
             </div>
           </div>

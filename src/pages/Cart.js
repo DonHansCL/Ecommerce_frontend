@@ -97,7 +97,7 @@ function Cart() {
                     )}
                     <span className="font-medium">{item.product.nombre}</span>
                   </td>
-                  <td className="py-4 px-6 text-center">${formatPrice(item.product.precio)}</td>
+                  <td className="py-4 px-6 text-center">{formatPrice(item.product.precio)}</td>
                   <td className="py-4 px-6 text-center">
                     <input
                       type="number"
@@ -107,7 +107,7 @@ function Cart() {
                       className="w-20 text-center border rounded-md"
                     />
                   </td>
-                  <td className="py-4 px-6 text-center">${(item.product.precio * item.cantidad).toFixed(2)}</td>
+                  <td className="py-4 px-6 text-center">{formatPrice(item.product.precio * item.cantidad)}</td>
                   <td className="py-4 px-6 text-center">
                     <button
                       onClick={() => handleRemove(item.product.id)}
