@@ -3,8 +3,9 @@ import React, { useContext, useState, useEffect } from 'react';
 import { CartContext } from '../context/CartContext';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 import { formatPrice } from '../utils/formatPrice';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
 
 function Checkout() {
   const { cartItems, clearCart } = useContext(CartContext);
