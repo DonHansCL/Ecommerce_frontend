@@ -5,6 +5,7 @@ import { CartContext } from '../context/CartContext';
 import { FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { formatPrice } from '../utils/formatPrice';
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 
@@ -98,7 +99,7 @@ function Cart() {
                     )}
                     <span className="font-medium">{item.product.nombre}</span>
                   </td>
-                  <td className="py-4 px-6 text-center">${item.product.precio.toFixed(2)}</td>
+                  <td className="py-4 px-6 text-center">${formatPrice(item.product.precio)}</td>
                   <td className="py-4 px-6 text-center">
                     <input
                       type="number"
@@ -127,7 +128,7 @@ function Cart() {
         <div className="w-full md:w-1/3 bg-gray-100 p-6 rounded-lg shadow-md">
           <div className="flex justify-between mb-4">
             <span className="text-xl font-semibold">Total:</span>
-            <span className="text-xl font-semibold">${totalPrice.toFixed(2)}</span>
+            <span className="text-xl font-semibold">${formatPrice(totalPrice)}</span>
           </div>
           <div className="flex justify-between">
             <button

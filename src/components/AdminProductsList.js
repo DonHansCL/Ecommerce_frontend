@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiEdit, FiTrash2 } from 'react-icons/fi';
+import { formatPrice } from '../utils/formatPrice';
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function AdminProductsList({ products, onEdit, onDelete }) {
@@ -158,7 +159,7 @@ function AdminProductsList({ products, onEdit, onDelete }) {
                 </td>
                 <td className="px-6 py-4">
                   <div className="text-sm text-gray-900">
-                    <div>Precio: ${product.precio}</div>
+                    <div>Precio: ${formatPrice(product.precio)}</div>
                     <div>Stock: {product.cantidadEnStock}</div>
                     <div className="text-sm text-gray-500">
                       Categoría: {product.Category?.nombre || 'N/A'}

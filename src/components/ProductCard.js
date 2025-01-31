@@ -56,16 +56,16 @@ function ProductCard({ product, size = 'large' }) {
           className={imageClasses}
         />
         {/* Icono de Me Gusta */}
-        <button
+        {/* <button
           className="absolute top-2 right-2 bg-white bg-opacity-75 rounded-full p-1 hover:bg-opacity-100 transition"
           onClick={() => {
             // Funcionalidad para me gusta
             // Puedes agregar lógica aquí o pasar una función como prop
-            console.log(`Producto ${product.id} marcado como favorito`);
+            //console.log(`Producto ${product.id} marcado como favorito`);
           }}
         >
           <FaHeart className="h-5 w-5 text-red-500" />
-        </button>
+        </button> */}
       </Link>
       <div className="mt-4 px-5 pb-5 flex-1 flex flex-col">
         <Link to={`/product/${product.id}`}>
