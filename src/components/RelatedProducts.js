@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from './ProductCard';
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
-
-
 function RelatedProducts({ categoriaId, currentProductId }) {
   const [related, setRelated] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -34,7 +32,7 @@ function RelatedProducts({ categoriaId, currentProductId }) {
 
   if (loading) {
     return (
-      <div className="mt-12 text-center text-gray-700 dark:text-gray-200">
+      <div className="mt-12 text-center text-gray-700 ">
         Cargando productos relacionados...
       </div>
     );
@@ -50,7 +48,7 @@ function RelatedProducts({ categoriaId, currentProductId }) {
 
   if (related.length === 0) {
     return (
-      <div className="mt-12 text-center text-gray-700 dark:text-gray-200">
+      <div className="mt-12 text-center text-gray-700 ">
         No hay productos relacionados disponibles.
       </div>
     );
