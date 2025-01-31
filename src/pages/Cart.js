@@ -1,5 +1,3 @@
-// src/pages/Cart.js
-
 import React, { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import { FaTrash } from 'react-icons/fa';
