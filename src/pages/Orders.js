@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { formatPrice } from '../utils/formatPrice';
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function Orders() {
@@ -86,7 +87,7 @@ function Orders() {
                   <div className="bg-gray-100 p-4 rounded-lg">
                     <p className="text-gray-700"><strong>Dirección de Envío:</strong> {order.direccionEnvio}</p>
                     <p className="text-gray-700"><strong>Método de Pago:</strong> {order.metodoPago}</p>
-                    <p className="text-gray-700"><strong>Total:</strong> <span className="text-indigo-600">${order.total}</span></p>
+                    <p className="text-gray-700"><strong>Total:</strong> <span className="text-indigo-600">{formatPrice(order.total)}</span></p>
                   </div>
                   <div className="bg-gray-100 p-4 rounded-lg">
                     <p className="text-gray-700"><strong>Cliente:</strong> {order.User ? order.User.nombre : 'N/A'}</p>
@@ -111,7 +112,7 @@ function Orders() {
                             <p className="text-gray-600">Cantidad: {item.cantidad}</p>
                           </div>
                           <div className="text-right">
-                            <p className="font-semibold text-indigo-600">${item.precio}</p>
+                            <p className="font-semibold text-indigo-600">{formatPrice(item.precio)}</p>
                           </div>
                         </div>
                       ))

@@ -1,7 +1,7 @@
-// src/components/AdminOrdersList.js
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { FiChevronDown, FiChevronUp, FiPackage, FiTruck, FiCheck, FiX } from 'react-icons/fi';
+import { formatPrice } from '../utils/formatPrice';
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function AdminOrdersList() {
@@ -131,7 +131,7 @@ function AdminOrdersList() {
         </div>
         <div className="bg-indigo-50 p-4 rounded-lg shadow">
           <h4 className="text-sm font-medium text-indigo-700">Total Ventas</h4>
-          <p className="text-2xl font-bold text-indigo-900">${orderStats.totalVentas.toFixed(2)}</p>
+          <p className="text-2xl font-bold text-indigo-900">${formatPrice(orderStats.totalVentas)}</p>
         </div>
       </div>
 
@@ -232,12 +232,12 @@ function AdminOrdersList() {
                                   <div className="flex-1">
                                     <p className="font-medium text-gray-900">{item.product.nombre}</p>
                                     <p className="text-sm text-gray-600">
-                                      Cantidad: {item.cantidad} x ${parseFloat(item.precio).toFixed(2)}
+                                      Cantidad: {item.cantidad} x {formatPrice(item.precio)}
                                     </p>
                                   </div>
                                   <div className="text-right">
                                     <p className="font-medium text-gray-900">
-                                      ${(item.cantidad * parseFloat(item.precio)).toFixed(2)}
+                                      {formatPrice(item.cantidad * item.precio)}
                                     </p>
                                   </div>
                                 </div>

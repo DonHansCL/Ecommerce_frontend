@@ -126,7 +126,7 @@ function Cart() {
         <div className="w-full md:w-1/3 bg-gray-100 p-6 rounded-lg shadow-md">
           <div className="flex justify-between mb-4">
             <span className="text-xl font-semibold">Total:</span>
-            <span className="text-xl font-semibold">${formatPrice(totalPrice)}</span>
+            <span className="text-xl font-semibold">{formatPrice(totalPrice)}</span>
           </div>
           <div className="flex justify-between">
             <button
