@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import { FiMinus, FiPlus } from 'react-icons/fi';
 import { FaShoppingCart, FaHeart } from 'react-icons/fa';
+import { formatPrice } from '../utils/formatPrice';
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function ProductCard({ product, size = 'large' }) {
@@ -80,7 +81,7 @@ function ProductCard({ product, size = 'large' }) {
         </p>
         <div className="flex items-center justify-between">
           <div>
-            <span className={priceClasses}>${product.precio}</span>
+            <span className={priceClasses}>${formatPrice(product.precio)}</span>
             {product.originalPrice && (
               <span className="text-sm text-gray-500 line-through ml-2">
                 ${product.originalPrice}
