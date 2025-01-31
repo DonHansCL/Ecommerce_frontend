@@ -3,7 +3,7 @@ import { FaShippingFast, FaHeadset, FaUndo } from 'react-icons/fa';
 
 function Features() {
   return (
-    <section className="bg-gray-50 dark:bg-gray-800 py-16">
+    <section className="bg-gray-50  py-16">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-800 dark:text-white">¿Por qué elegirnos?</h2>
