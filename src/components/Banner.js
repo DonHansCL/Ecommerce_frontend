@@ -1,6 +1,7 @@
 // src/components/Banner.js
 import React from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import Link from 'react-router-dom';
 
 function Banner() {
   return (
@@ -8,12 +9,12 @@ function Banner() {
       <div className="md:w-1/2 text-center md:text-left">
         <h1 className="text-2xl md:text-4xl font-bold mb-4">¡Bienvenido a Nuestra Tienda!</h1>
         <p className="text-xl md:text-2xl mb-6">Descubre las mejores ofertas y productos exclusivos.</p>
-        <a
-          href="/catalog"
+        <Link
+          to="/catalog"
           className="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded"
         >
           Explorar Productos
-        </a>
+        </Link>
       </div>
       <div className="md:w-1/2 mt-6 md:mt-0">
         <img
