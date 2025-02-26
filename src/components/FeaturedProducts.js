@@ -32,7 +32,7 @@ function FeaturedProducts() {
   }, []);
 
   return (
-    <div className="my-8">
+    <div className="my-8 my-8 container mx-auto px-4 sm:px-6 lg:px-8">
       <h2 className="text-2xl font-semibold mb-4 text-center">Productos Destacados</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
         {products.length > 0 ? (
