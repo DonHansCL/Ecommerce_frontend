@@ -131,7 +131,7 @@ function AdminOrdersList() {
         </div>
         <div className="bg-indigo-50 p-4 rounded-lg shadow">
           <h4 className="text-sm font-medium text-indigo-700">Total Ventas</h4>
-          <p className="text-2xl font-bold text-indigo-900">${formatPrice(orderStats.totalVentas)}</p>
+          <p className="text-2xl font-bold text-indigo-900">{formatPrice(orderStats.totalVentas)}</p>
         </div>
       </div>
 
